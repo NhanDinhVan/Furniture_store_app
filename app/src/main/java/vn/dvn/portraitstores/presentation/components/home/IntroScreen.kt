@@ -1,4 +1,4 @@
-package vn.dvn.portraitstores.ui.components.home
+package vn.dvn.portraitstores.presentation.components.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
