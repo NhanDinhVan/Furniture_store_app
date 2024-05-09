@@ -14,20 +14,20 @@ import javax.inject.Inject
 class GetAllProductUseCase @Inject constructor(
     private val productRepository: ProductRepository
 ){
-    operator fun invoke(): Flow<Resource<ApiResponseDto<List<Products>>>> = flow {
+    operator fun invoke(): Flow<Resource<List<Products>>> = flow {
         try {
-            emit(Resource.Loading<ApiResponseDto<List<Products>>>())
+            emit(Resource.Loading<List<Products>>())
 
-            val productList = productRepository.getAll().result?.map {
+            val productList = productRepository.getAll().result!!.map {
                 it.toProduct()
             }
-            emit(Resource.Success<ApiResponseDto<List<Products>>>(ApiResponseDto(result = productList)))
+            emit(Resource.Success<List<Products>>(productList))
         }catch (e: HttpException)
         {
-            emit(Resource.Error<ApiResponseDto<List<Products>>>(message = e.localizedMessage?: "An unexpected error occured"))
+            emit(Resource.Error<List<Products>>(message = e.localizedMessage?: "An unexpected error occured"))
         }catch (e: IOException)
         {
-            emit(Resource.Error<ApiResponseDto<List<Products>>>(message = "Couldn't reach server. Check your internet connection."))
+            emit(Resource.Error<List<Products>>(message = e.localizedMessage?:"IO Exception"))
         }
     }
 }

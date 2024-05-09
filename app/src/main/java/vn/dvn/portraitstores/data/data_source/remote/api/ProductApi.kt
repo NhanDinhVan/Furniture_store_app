@@ -6,9 +6,9 @@ import vn.dvn.portraitstores.data.data_source.remote.dto.ApiResponseDto
 import vn.dvn.portraitstores.data.data_source.remote.dto.ProductDto
 
 interface ProductApi {
-    @GET("/products")
+    @GET("products")
     suspend fun getAll():ApiResponseDto<List<ProductDto>>;
 
-    @GET("/products/{id}")
+    @GET("products/{id}")
     suspend fun getById(@Path("id") id: String): ApiResponseDto<ProductDto>;
 }

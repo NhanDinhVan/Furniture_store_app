@@ -1,4 +1,4 @@
-package vn.dvn.portraitstores.presentation.App
+package vn.dvn.portraitstores
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
