@@ -2,10 +2,12 @@ package vn.dvn.portraitstores.data.data_source.remote.dto
 
 import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable
-import vn.dvn.portraitstores.domain.model.Products
+import vn.dvn.portraitstores.domain.model.Brands
+import vn.dvn.portraitstores.domain.model.Category
+import vn.dvn.portraitstores.domain.model.Product
 @Serializable
 data class ProductDto(
-    val brand: String,
+    val brand: Brands,
     @SerializedName("creation_time")
     val creationTime: String,
     val description: String,
@@ -19,24 +21,26 @@ data class ProductDto(
     val state: String,
     @SerializedName("updationtime")
     val updationTime: String,
-    val view: Int
+    val view: Int,
+    val category: Category
 )
 
-fun ProductDto.toProduct():Products
+fun ProductDto.toProduct():Product
 {
-    return Products(
-       brand= brand,
-        creationTime= creationTime,
-        description= description,
-        discount= discount,
-        id= id,
-        imagePath= imagePath,
-        name= name,
-        price= price,
-        quantity= quantity,
-        sold= sold,
-        state= state,
-        updationTime= updationTime,
-        view=view
+    return Product(
+       brand = brand,
+        creationTime = creationTime,
+        description = description,
+        discount = discount,
+        id = id,
+        imagePath = imagePath,
+        name = name,
+        price = price,
+        quantity = quantity,
+        sold = sold,
+        state = state,
+        updationTime = updationTime,
+        view = view,
+        category= category
     )
 }

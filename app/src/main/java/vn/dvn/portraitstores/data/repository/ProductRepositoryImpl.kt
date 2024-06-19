@@ -17,4 +17,8 @@ class ProductRepositoryImpl  @Inject constructor(
     override suspend fun getById(id: String): ApiResponseDto<ProductDto> {
         return productApi.getById(id);
     }
+
+    override suspend fun getByCategoryId(categoryId: String): ApiResponseDto<List<ProductDto>> {
+        return productApi.getByCategoryId(categoryId);
+    }
 }
